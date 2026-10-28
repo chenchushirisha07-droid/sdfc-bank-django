@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Close Account - SDFC Bank{% endblock %}
+{% block content %}
+<h2 class="form-title">CLOSE ACCOUNT</h2>
+<p class="subtitle">Enter your details to close your account.</p>
+<div class="account-note">
+    Ensure your account has a zero balance before closing.
+</div>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-buttons">
+        <button class="submit-btn" type="submit">Close Account</button>
+        <button class="clear-btn" type="reset">Clear</button>
+    </div>
+</form>
+<a href="/" class="back-link">← Back to Home</a>
+{% endblock %}

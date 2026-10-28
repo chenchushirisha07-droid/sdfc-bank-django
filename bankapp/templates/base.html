@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SDFC BANK{% endblock %}</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f3f5f3;
+            font-family: "Times New Roman", serif;
+            color: #111;
+        }
+
+        .bank-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            background: white;
+            min-height: 90vh;
+            padding: 25px;
+            border: 1px solid #ddd;
+        }
+
+        /* Bank heading */
+
+        .bank-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            padding: 10px;
+            min-height: 125px;
+        }
+
+        .bank-logo {
+            font-size: 35px;
+            font-weight: bold;
+            color: #258b94;
+        }
+
+        .bank-title {
+            text-align: center;
+        }
+
+        .bank-title h1 {
+            font-size: 34px;
+            margin: 0 0 12px;
+        }
+
+        .bank-title p {
+            font-size: 19px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* Navigation bar */
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0;
+            background: linear-gradient(
+                to right,
+                #cfe3d7,
+                #b5e6a2,
+                #cfe3d7
+            );
+            margin: 12px 0 35px;
+        }
+
+        .navbar a {
+            color: #111;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 14px 16px;
+        }
+
+        .navbar a:hover {
+            background: #83c98c;
+            color: white;
+        }
+
+        /* Three-column layout */
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .side-heading,
+        .form-title {
+            background: linear-gradient(
+                to right,
+                #cce2d5,
+                #b8e5a7,
+                #d2e3df
+            );
+            border-radius: 20px;
+            padding: 8px;
+            text-align: center;
+            font-size: 21px;
+            margin: 0 0 25px;
+        }
+
+        .services ul {
+            padding-left: 22px;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .services a {
+            color: #222;
+            text-decoration: none;
+        }
+
+        .services a:hover {
+            color: #16843c;
+            text-decoration: underline;
+        }
+
+        .welcome {
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+
+        .welcome img {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            margin: 10px auto;
+        }
+
+        .welcome p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Centre form */
+
+        .content-area {
+            min-width: 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        form p {
+            display: grid;
+            grid-template-columns: minmax(100px, 140px) minmax(0, 1fr);
+            align-items: center;
+            gap: 10px;
+            margin: 18px 0;
+        }
+
+        form label {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        form input,
+        form select,
+        form textarea {
+            width: 100%;
+            min-width: 0;
+            padding: 9px;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        form input:focus,
+        form select:focus,
+        form textarea:focus {
+            outline: 2px solid #b5e6a2;
+            border-color: #489d59;
+        }
+
+        .submit-btn,
+        .clear-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px 5px;
+        }
+
+        .submit-btn {
+            background: #b8e5a7;
+            color: #111;
+        }
+
+        .submit-btn:hover {
+            background: #83c98c;
+        }
+
+        .clear-btn {
+            background: #e7e7e7;
+        }
+
+        .form-buttons {
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #167b42;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background: #f2f8f1;
+            border-left: 5px solid #91cb8b;
+            padding: 15px;
+            margin-top: 20px;
+            overflow-wrap: anywhere;
+        }
+
+        .message {
+            padding: 12px;
+            background: #e2f3df;
+            border: 1px solid #a6d59e;
+            margin-bottom: 15px;
+        }
+
+        .bank-footer {
+            margin-top: 45px;
+            padding: 20px;
+            text-align: center;
+            background: #cfe3d7;
+            font-weight: bold;
+        }
+
+        /* Mobile and tablet layout */
+
+        @media (max-width: 850px) {
+            body {
+                padding: 8px;
+            }
+
+            .bank-container {
+                padding: 15px;
+            }
+
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .bank-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .navbar a {
+                padding: 10px;
+                font-size: 15px;
+            }
+
+            .services {
+                order: 2;
+            }
+
+            .content-area {
+                order: 1;
+            }
+
+            .welcome {
+                order: 3;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="bank-container">
+
+    <header class="bank-header">
+
+        <div class="bank-title">
+            <h1>SDFC BANK</h1>
+            <p>EXTRAORDINARY SERVICES</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <a href="/">Home</a>
+        <a href="/newaccount/">New Account</a>
+        <a href="/balance/">Balance</a>
+        <a href="/deposit/">Deposit</a>
+        <a href="/withdraw/">Withdraw</a>
+        <a href="/transfer/">Transfer</a>
+        <a href="/closeaccount/">Close A/C</a>
+        <a href="/aboutus/">AboutUs</a>
+    </nav>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="main-layout">
+
+        <aside class="services">
+            <h2 class="side-heading">SERVICES</h2>
+
+            <ul>
+                <li><a href="/newaccount/">New Account</a></li>
+                <li><a href="/balance/">Balance Enquiry</a></li>
+                <li><a href="/deposit/">Deposit Banking</a></li>
+                <li><a href="/withdraw/">Withdraw Banking</a></li>
+                <li><a href="/transfer/">Money Transfer</a></li>
+                <li><a href="/closeaccount/">Close Account</a></li>
+                <li><a href="/aboutus/">About Us</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-area">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <aside class="welcome">
+            <h2 class="side-heading">WELCOME...</h2>
+
+            <div class="info-box">
+                <h3>SDFC BANK</h3>
+                <p>
+                    Welcome to our banking application.
+                    Manage your account through the
+                    services available on this website.
+                </p>
+                <p>
+                    Open an account, check your balance,
+                    deposit money, withdraw money and
+                    transfer money between accounts.
+                </p>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer class="bank-footer">
+        SDFC BANK - EXTRAORDINARY SERVICES
+        <p>Thank you for visiting our banking application.</p>
+    </footer>
+
+</div>
+
+</body>
+</html>

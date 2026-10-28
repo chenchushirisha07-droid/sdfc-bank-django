@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Create Account - SDFC Bank{% endblock %}
+{% block content %}
+<h2 class="form-title">CREATE NEW ACCOUNT</h2>
+<p class="subtitle">Enter your details to open an account.</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-buttons">
+        <button class="submit-btn" type="submit">Create Account</button>
+        <button class="clear-btn" type="reset">Clear</button>
+    </div>
+</form>
+<div class="account-note">Please check your details before submitting.</div>
+<a href="/" class="back-link">← Back to Home</a>
+{% endblock %}

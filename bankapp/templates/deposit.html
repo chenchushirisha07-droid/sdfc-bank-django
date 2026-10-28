@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Deposit - SDFC Bank{% endblock %}
+{% block content %}
+<h2 class="form-title">DEPOSIT MONEY</h2>
+<p class="subtitle">Deposit money into your account.</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-buttons">
+        <button class="submit-btn" type="submit">Deposit Money</button>
+        <button class="clear-btn" type="reset">Clear</button>
+    </div>
+</form>
+<a href="/" class="back-link">← Back to Home</a>
+{% endblock %}

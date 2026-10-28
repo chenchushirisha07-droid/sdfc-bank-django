@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Balance - SDFC Bank{% endblock %}
+{% block content %}
+<h2 class="form-title">BALANCE ENQUIRY</h2>
+<p class="subtitle">Check your available account balance.</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-buttons">
+        <button class="submit-btn" type="submit">Check Balance</button>
+        <button class="clear-btn" type="reset">Clear</button>
+    </div>
+</form>
+{% if account %}
+<div class="info-box">
+    <h3>Account Information</h3>
+    <p>Account Number: {{ account.account_no }}</p>
+    <p>Name: {{ account.name }}</p>
+    <p>Available Balance: ₹{{ balance }}</p>
+</div>
+{% endif %}
+<a href="/" class="back-link">← Back to Home</a>
+{% endblock %}

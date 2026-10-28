@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Welcome to SDFC Bank</h2>
+
+<p>Manage your banking activities using the options below.</p>
+
+<ul>
+    <li><a href="{% url 'newaccount' %}">Create a new account</a></li>
+    <li><a href="{% url 'balance' %}">Check your balance</a></li>
+    <li><a href="{% url 'deposit' %}">Deposit money</a></li>
+    <li><a href="{% url 'withdraw' %}">Withdraw money</a></li>
+    <li><a href="{% url 'transfer' %}">Transfer money</a></li>
+    <li><a href="{% url 'closeaccount' %}">Close your account</a></li>
+</ul>
+{% endblock %}
